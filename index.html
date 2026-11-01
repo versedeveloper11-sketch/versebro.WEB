@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerseBro.WEB</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #eafaff, #ffffff, #dceeff);
+    color: #252044;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.floating {
+    position: fixed;
+    font-size: 35px;
+    opacity: .3;
+    pointer-events: none;
+    z-index: 0;
+    animation: float 7s ease-in-out infinite;
+}
+
+.f1 {top:10%;left:5%}
+.f2 {top:25%;right:7%}
+.f3 {top:65%;left:8%}
+.f4 {top:80%;right:10%}
+.f5 {top:45%;left:2%}
+.f6 {top:12%;right:30%}
+.f7 {bottom:5%;left:40%}
+.f8 {top:55%;right:4%}
+
+@keyframes float {
+    0%,100% {transform:translateY(0) rotate(-8deg)}
+    50% {transform:translateY(-25px) rotate(12deg)}
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 35px 25px;
+    text-align: center;
+    border: 3px solid #8000ff;
+    border-radius: 30px;
+    background: rgba(255,255,255,.88);
+    box-shadow: 0 0 15px #9c4dff,
+                0 0 35px rgba(0,150,255,.35);
+}
+
+.logo {
+    font-size: clamp(35px,7vw,58px);
+    font-weight: 900;
+    color: #6811d9;
+    text-shadow: 0 0 12px #b78aff;
+    margin-bottom: 15px;
+}
+
+.lightning {color:#00aaff}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 650px;
+}
+
+.highlight {
+    color: #8000ff;
+    font-weight: bold;
+}
+
+.section-title {
+    font-size: 24px;
+    margin: 25px 0 18px;
+    color: #6811d9;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 14px;
+    max-width: 620px;
+    margin: auto;
+}
+
+.option {
+    padding: 20px 10px;
+    border: 2px solid #9b50ff;
+    border-radius: 18px;
+    background: #f5f2ff;
+    font-size: 17px;
+    font-weight: bold;
+    color: #5e20bb;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 0 8px #d7baff;
+}
+
+.option:hover {
+    background: #7517df;
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 0 18px #8c00ff;
+}
+
+.notice {
+    margin-top: 30px;
+    padding: 18px;
+    border-radius: 15px;
+    background: #eeeaff;
+    border: 1px dashed #8000ff;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.pricing {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.price-option {
+    padding: 22px 10px;
+    border: 2px solid #00a5dc;
+    border-radius: 18px;
+    background: #eafaff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    color: #0878aa;
+    transition: .25s;
+}
+
+.price-option:hover {
+    background: #0878c9;
+    color: white;
+    box-shadow: 0 0 18px #00aaff;
+    transform: translateY(-4px);
+}
+
+.description {
+    font-size: 13px;
+    font-weight: normal;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    max-width: 390px;
+    margin: 15px auto;
+    padding: 17px;
+    border: 2px solid #159b55;
+    border-radius: 18px;
+    background: #e5fff0;
+    color: #087e40;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #12a85b;
+    color: white;
+    transform: scale(1.03);
+    box-shadow: 0 0 18px #12a85b;
+}
+
+.back-btn {
+    background: #333;
+    border-color: #333;
+    color: white;
+    max-width: 180px;
+}
+
+.back-btn:hover {
+    background: #555;
+}
+
+.small {
+    font-size: 13px;
+    color: #555;
+    margin-top: 20px;
+}
+
+@media(max-width:500px) {
+    .container {
+        width: 94%;
+        padding: 25px 15px;
+        margin: 20px auto;
+    }
+
+    .options,.pricing {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .option,.price-option {
+        font-size: 14px;
+        padding: 17px 6px;
+    }
+
+    .subtitle {font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING BACKGROUND -->
+
+<div class="floating f1">🎮</div>
+<div class="floating f2">☕</div>
+<div class="floating f3">⚽</div>
+<div class="floating f4">📱</div>
+<div class="floating f5">🏪</div>
+<div class="floating f6">🛍️</div>
+<div class="floating f7">🎮</div>
+<div class="floating f8">🏬</div>
+
+
+<!-- PAGE 1: HOMEPAGE -->
+
+<div class="container page active" id="home">
+
+    <h1 class="logo">
+        VerseBro<span class="lightning">.WEB</span>
+    </h1>
+
+    <p class="subtitle">
+        ⚡ Want to promote your business online?
+        <br><br>
+        Contact us to create a website for your
+        <span class="highlight">
+        Shop, Restaurant, Cafe, Grocery Store
+        </span>
+        or to <span class="highlight">hire employees</span>
+        for your business.
+        <br><br>
+        Make your business look professional online!
+    </p>
+
+    <button class="option" onclick="showPage('category')"
+    style="width:100%;max-width:350px;margin:20px auto">
+        🚀 CREATE YOUR WEBSITE
+    </button>
+
+    <div class="notice">
+        ⚡ <b>IMPORTANT NOTICE</b> ⚡
+        <br>
+        No hosting websites are available now.
+        <br>
+        We only create websites for promoting your business
+        and for visitors to view your business information.
+    </div>
+
+    <p class="small">
+        VerseBro.WEB | Website Design Services
+    </p>
+
+</div>
+
+
+<!-- PAGE 2: CATEGORY -->
+
+<div class="container page" id="category">
+
+    <h1 class="logo">Choose Your Category</h1>
+
+    <p class="subtitle">
+        Select which type of website you want us to create.
+    </p>
+
+    <div class="options">
+
+        <button class="option" onclick="chooseCategory('Shop')">
+            🏪 Shop
+        </button>
+
+        <button class="option" onclick="chooseCategory('Restaurant')">
+            🍽️ Restaurant
+        </button>
+
+        <button class="option" onclick="chooseCategory('Cafe')">
+            ☕ Cafe
+        </button>
+
+        <button class="option" onclick="chooseCategory('Grocery')">
+            🛒 Grocery
+        </button>
+
+        <button class="option" onclick="chooseCategory('Employee Hiring')">
+            👨‍💼 Employee Hiring
+        </button>
+
+        <button class="option" onclick="chooseCategory('Order Website')">
+            📝 Order Website
+        </button>
+
+    </div>
+
+    <button class="btn back-btn" onclick="showPage('home')">
+        ← Back
+    </button>
+
+</div>
+
+
+<!-- PAGE 3: WEBSITE DESIGN -->
+
+<div class="container page" id="design">
+
+    <h1 class="logo">Choose Your Design</h1>
+
+    <p class="subtitle">
+        Select the website design you prefer.
+    </p>
+
+    <div class="pricing">
+
+        <button class="price-option"
+        onclick="choosePlan('Decent Website')">
+
+            ✨ Decent Website
+
+            <div class="description">
+                Simple and attractive design.
+                <br>
+                Costs less.
+            </div>
+
+        </button>
+
+        <button class="price-option"
+        onclick="choosePlan('Featured Website')">
+
+            ⚡ Featured Website
+
+            <div class="description">
+                Advanced design and effects.
+                <br>
+                Costs more.
+            </div>
+
+        </button>
+
+    </div>
+
+    <div class="notice">
+        💡 <b>Pricing Information</b>
+        <br>
+        Decent Website costs less.
+        <br>
+        Featured Website costs more.
+        <br>
+        Final pricing will be discussed on WhatsApp.
+    </div>
+
+    <button class="btn back-btn" onclick="showPage('category')">
+        ← Back
+    </button>
+
+</div>
+
+
+<!-- PAGE 4: CONTACT NUMBERS -->
+
+<div class="container page" id="contact">
+
+    <h1 class="logo">
+        VerseBro<span class="lightning">.WEB</span>
+    </h1>
+
+    <h2 class="section-title">
+        Almost Done! 🎉
+    </h2>
+
+    <p class="subtitle">
+        Select a WhatsApp contact number
+        to send your website enquiry.
+    </p>
+
+    <div class="notice">
+        <b>Your Selected Website</b>
+        <br><br>
+        Category: <span id="finalCategory"></span>
+        <br>
+        Design: <span id="finalPlan"></span>
+    </div>
+
+    <h2 class="section-title">
+        Contact Us on WhatsApp
+    </h2>
+
+    <button class="btn" onclick="sendWhatsApp('9890366030')">
+        💬 +91 98903 66030
+    </button>
+
+    <button class="btn" onclick="sendWhatsApp('9822829595')">
+        💬 +91 98228 29595
+    </button>
+
+    <button class="btn" onclick="sendWhatsApp('8485859970')">
+        💬 +91 84858 59970
+    </button>
+
+    <p class="small">
+        Choose any one number to continue.
+    </p>
+
+    <button class="btn back-btn" onclick="showPage('design')">
+        ← Back
+    </button>
+
+</div>
+
+
+<script>
+
+let selectedCategory = "";
+let selectedPlan = "";
+
+// Page navigation
+
+function showPage(pageId) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageId).classList.add("active");
+
+    window.scrollTo(0,0);
+}
+
+// Category selection
+
+function chooseCategory(category) {
+
+    selectedCategory = category;
+
+    showPage('design');
+}
+
+// Design selection
+
+function choosePlan(plan) {
+
+    selectedPlan = plan;
+
+    document.getElementById("finalCategory").innerText =
+        selectedCategory;
+
+    document.getElementById("finalPlan").innerText =
+        selectedPlan;
+
+    showPage('contact');
+}
+
+// WhatsApp message
+
+function sendWhatsApp(number) {
+
+    let message =
+        "Hello VerseBro.WEB! 👋\n\n" +
+        "I want to create a website.\n\n" +
+        "Website Category: " + selectedCategory + "\n" +
+        "Website Design: " + selectedPlan + "\n\n" +
+        "Please provide me with more details and pricing.\n\n" +
+        "Thank you!";
+
+    let url =
+        "https://wa.me/91" + number +
+        "?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
